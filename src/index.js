@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Mapping from './sandboxMap.js'
+//import Header from './Header.js';
+import Map from './Map.js'
 
-// ReactDOM.render(
-//   <Mapping />,
-//   document.getElementById('root')
-// )
+
+ReactDOM.render(
+  <Map />,
+  document.getElementById('root')
+)
