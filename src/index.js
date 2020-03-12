@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import Header from './Header.js';
+import Map from './Map.js'
+
 
 ReactDOM.render(
-  <h1>Hello World!</h1>,
+  <Map />,
   document.getElementById('root')
 )
