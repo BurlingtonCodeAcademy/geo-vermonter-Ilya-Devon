@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from './Map.js';
+import StateMap from './Map.js';
 import Header from './Header.js';
 import Sidebar from './Sidebar.js';
 import Footer from './Footer.js';
@@ -19,7 +19,7 @@ class App extends React.Component {
       <div id='container'>
         <Header />
         <div id='midWrapper'>
-          <Map />
+          <StateMap />
           <Sidebar />
         </div>
         <Footer />

@@ -17,6 +17,7 @@ class Sidebar extends React.Component {
         this.setState({
             gameStart: true
         })
+        console.log(this.state.gameStart)
     }
 
     guess = () => {
@@ -27,7 +28,7 @@ class Sidebar extends React.Component {
 
     quit = () => {
         this.setState({
-            quit: true
+            gameStart: false
         })
     }
     
@@ -35,10 +36,18 @@ class Sidebar extends React.Component {
 
     render() {
         return (
+            // this.state.gameStart ? 
+            // (<div>
+
+            // </div>) 
+            // : (<div>
+
+            // </div>)
+
             <div id='sidebar'>
-                <button class='button' type='button' onClick={this.startGame}>Start</button>
-                <button class='button' type='button'>Guess</button>
-                <button class='button' type='button'>Quit</button>
+                <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
+                <button className='button' disabled={!this.state.gameStart} type='button'>Guess</button>
+                <button className='button' disabled ={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
             </div>
         )
     }
