@@ -18,7 +18,9 @@ class App extends React.Component {
       quit: false,
       lat: null,
       long: null,
-      zoom: 8,
+      county: null,
+      town: null,
+      zoom: 8
     }
   }
 
@@ -74,26 +76,38 @@ class App extends React.Component {
     )
   }
 
-  //  return = () => {
-  //    this.set
-  //  })
-  //}
-
-  startGame = () => {
+  startGame = async () => {
     let latLong = this.randomPoint()
+    let info = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLong[0]}&lon=${latLong[1]}`)
+      .then(response => response.json())
+      .then(jsonObj => jsonObj)
 
     this.setState({
       gameStart: true,
       lat: latLong[0],
       long: latLong[1],
-      zoom: 18
+      zoom: 18,
+      county: info.address.county,
+      town: info.address.hamlet || info.address.village || info.address.town || info.address.city
     })
-
   }
 
   guess = () => {
     this.setState({
 
+    })
+  }
+
+  quit = () => {
+    this.setState({
+      gameStart: false,
+      guess: false,
+      quit: false,
+      lat: null,
+      long: null,
+      county: null,
+      town: null,
+      zoom: 8
     })
   }
 
@@ -115,15 +129,17 @@ class App extends React.Component {
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} />
           <div id='sidebar'>
-            <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
-            <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
-            <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
+            <div id='buttons'>
+              <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
+              <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
+              <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
+            </div>
             <div id="informationContainter">
-              <div id="county" className="information">County: {this.state.county}</div>
-              <div id="town" className="information">Town: {this.state.town}</div>
-              <div id="lat" className="information">Latitude: {this.state.lat}
+              <div id="county" className="information">County: {this.state.gameStart ? '???' : this.state.county}</div>
+              <div id="town" className="information">Town: {this.state.gameStart ? '???' : this.state.town}</div>
+              <div id="lat" className="information">Latitude: {this.state.gameStart ? '???' : this.state.lat}
               </div>
-              <div id="long" className="information">Longtitude: {this.state.long}</div>
+              <div id="long" className="information">Longtitude: {this.state.gameStart ? '???' : this.state.long}</div>
             </div>
 
             <div id="controllers">
