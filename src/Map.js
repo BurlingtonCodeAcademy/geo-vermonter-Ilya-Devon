@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, TileLayer, GeoJSON, } from "react-leaflet";
+import { Map, TileLayer, GeoJSON, Marker } from "react-leaflet";
 import "./map.css";
 import borderData from './Border.js';
 
@@ -9,23 +9,14 @@ class StateMap extends React.Component {
         super(props) 
 
         this.state = {
-            lat: this.randomLat(),
-            long: this.randomLong()
+            
         }
     }
 
-    randomLat = (min, max) => {
-        let lat = Math.random() * (45.005419 - 42.730315) + 42.730315
-        return lat
-    }
-
-    randomLong = (min, max) => {
-        let long = (Math.random() * (71.510225 - 73.35218) + 73.35218) * - 1
-        return long
-    }
+    
 
     componentDidMount() {
-        console.log(this.state.lat, this.state.long)
+        
     }
 
     render() {
@@ -36,6 +27,10 @@ class StateMap extends React.Component {
                     attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
                 />
                 <GeoJSON key='my-geoJson' data={borderData} />
+
+                { this.props.gameStart ?  <Marker position={[this.props.lat, this.props.long]}/> : <div></div> }
+
+               
             </Map>
         );
     }
