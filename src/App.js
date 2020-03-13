@@ -125,11 +125,11 @@ class App extends React.Component {
               <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
             </div>
             <div id="informationContainter">
-              <div id="county" className="information">County: {this.state.county}</div>
-              <div id="town" className="information">Town: {this.state.town}</div>
-              <div id="lat" className="information">Latitude: {this.state.lat}
+              <div id="county" className="information">County: {this.state.gameStart ? '???' : this.state.county}</div>
+              <div id="town" className="information">Town: {this.state.gameStart ? '???' : this.state.town}</div>
+              <div id="lat" className="information">Latitude: {this.state.gameStart ? '???' : this.state.lat}
               </div>
-              <div id="long" className="information">Longtitude: {this.state.long}</div>
+              <div id="long" className="information">Longtitude: {this.state.gameStart ? '???' : this.state.long}</div>
             </div>
 
             <div id="controllers">
