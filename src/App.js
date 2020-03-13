@@ -18,7 +18,7 @@ class App extends React.Component {
       quit: false,
       lat: null,
       long: null,
-      zoom: 8
+      zoom: 8,
     }
   }
 
@@ -30,18 +30,6 @@ class App extends React.Component {
   randomLong = (min, max) => {
     let long = (Math.random() * (71.510225 - 73.35218) + 73.35218) * - 1
     return long
-  }
-
-  startGame = () => {
-    let latLong = this.randomPoint()
-
-    this.setState({
-      gameStart: true,
-      lat: latLong[0],
-      long: latLong[1],
-      zoom: 18
-    })
-
   }
 
   randomPoint = () => {
@@ -56,23 +44,6 @@ class App extends React.Component {
     }
 
     return [randomLat, randomLong]
-  }
-
-  guess = () => {
-    this.setState({
-
-    })
-  }
-
-  quit = () => {
-    this.setState({
-      gameStart: false,
-      guess: false,
-      quit: false,
-      lat: null,
-      long: null,
-      zoom: 8
-    })
   }
 
   north = () => {
@@ -103,8 +74,39 @@ class App extends React.Component {
     )
   }
 
+  //  return = () => {
+  //    this.set
+  //  })
+  //}
 
+  startGame = () => {
+    let latLong = this.randomPoint()
 
+    this.setState({
+      gameStart: true,
+      lat: latLong[0],
+      long: latLong[1],
+      zoom: 18
+    })
+
+  }
+
+  guess = () => {
+    this.setState({
+
+    })
+  }
+
+  quit = () => {
+    this.setState({
+      gameStart: false,
+      guess: false,
+      quit: false,
+      lat: null,
+      long: null,
+      zoom: 8
+    })
+  }
 
   render() {
     return (
@@ -137,6 +139,12 @@ class App extends React.Component {
               </div>
 
               <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.south}>South</button>
+
+            </div>
+
+            <div id="returnbtn-controlls">
+
+              <button type="button" disabled={!this.state.gameStart} className="returnbtn button" onClick={this.return}>Return</button>
 
             </div>
 
