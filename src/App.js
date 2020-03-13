@@ -105,8 +105,8 @@ class App extends React.Component {
       quit: false,
       lat: null,
       long: null,
-      county: null,
-      town: null,
+      county: this.state.county,
+      town: this.state.town,
       zoom: 8
     })
   }
@@ -122,7 +122,7 @@ class App extends React.Component {
             <div id='buttons'>
               <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
               <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
-              <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
+              <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Give Up</button>
             </div>
             <div id="informationContainter">
               <div id="county" className="information">County: {this.state.gameStart ? '???' : this.state.county}</div>
