@@ -50,13 +50,13 @@ class App extends React.Component {
     let stateLayer = L.geoJson(borderData)
     let results = leafletPip.pointInLayer([randomLong, randomLat], stateLayer)
     while (results.length === 0) {
-        randomLat = this.randomLat()
-        randomLong = this.randomLong()
-        results = leafletPip.pointInLayer([randomLong, randomLat], stateLayer)
+      randomLat = this.randomLat()
+      randomLong = this.randomLong()
+      results = leafletPip.pointInLayer([randomLong, randomLat], stateLayer)
     }
 
     return [randomLat, randomLong]
-}
+  }
 
   guess = () => {
     this.setState({
@@ -66,12 +66,20 @@ class App extends React.Component {
 
   quit = () => {
     this.setState({
-        gameStart: false,
-        guess: false,
-        quit: false,
-        lat: 43.8988,
-        long: -72.5778,
-        zoom: 8
+      gameStart: false,
+      guess: false,
+      quit: false,
+      lat: 43.8988,
+      long: -72.5778,
+      zoom: 8
+    })
+  }
+
+
+
+  North {
+    this.setState({
+
     })
   }
 
@@ -86,6 +94,12 @@ class App extends React.Component {
             <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
             <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
             <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Quit</button>
+            <div id="informationContainter">
+              <div id="county" className="information">County: {this.state.county}</div>
+              <div id="town" className="information">Town: {this.state.town}</div>
+              <div id="lat" className="information">Latitude: {this.state.lat}</div>
+              <div id="long" className="information">Longtitude: {this.state.long}</div>
+            </div>
           </div>
         </div>
         <Footer />
