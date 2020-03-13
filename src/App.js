@@ -16,8 +16,8 @@ class App extends React.Component {
       gameStart: false,
       guess: false,
       quit: false,
-      lat: 43.8988,
-      long: -72.5778,
+      lat: null,
+      long: null,
       zoom: 8
     }
   }
@@ -69,17 +69,9 @@ class App extends React.Component {
       gameStart: false,
       guess: false,
       quit: false,
-      lat: 43.8988,
-      long: -72.5778,
+      lat: null,
+      long: null,
       zoom: 8
-    })
-  }
-
-
-
-  North {
-    this.setState({
-
     })
   }
 
@@ -97,7 +89,8 @@ class App extends React.Component {
             <div id="informationContainter">
               <div id="county" className="information">County: {this.state.county}</div>
               <div id="town" className="information">Town: {this.state.town}</div>
-              <div id="lat" className="information">Latitude: {this.state.lat}</div>
+              <div id="lat" className="information">Latitude: {this.state.lat}
+              </div>
               <div id="long" className="information">Longtitude: {this.state.long}</div>
             </div>
           </div>
