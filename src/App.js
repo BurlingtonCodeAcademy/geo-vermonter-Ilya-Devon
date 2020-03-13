@@ -19,12 +19,10 @@ class App extends React.Component {
       <div id='container'>
         <Header />
         <div id='midWrapper'>
-        <Map />
-        <Sidebar />
+          <Map />
+          <Sidebar />
         </div>
-        <div id="footer-container">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     )
   }

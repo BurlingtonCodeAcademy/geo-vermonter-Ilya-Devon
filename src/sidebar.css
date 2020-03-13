@@ -1,6 +1,14 @@
 #sidebar {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
     border: 1px black solid;
-    width: auto;
+    width: 30vw;
     height: 600px;
-    margin-left: 15px;
+}
+
+.button {
+    margin: 5px;
+    width: 10vw;
 }

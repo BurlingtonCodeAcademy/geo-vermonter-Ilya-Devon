@@ -7,13 +7,38 @@ class Sidebar extends React.Component {
         super(props)
 
         this.state = {
+            gameStart: false,
+            guess: false,
+            quit: false
         }
     }
+
+    startGame = () => {
+        this.setState({
+            gameStart: true
+        })
+    }
+
+    guess = () => {
+        this.setState({
+            
+        })
+    }
+
+    quit = () => {
+        this.setState({
+            quit: true
+        })
+    }
+    
+
 
     render() {
         return (
             <div id='sidebar'>
-                This will be a sidebar of information
+                <button class='button' type='button' onClick={this.startGame}>Start</button>
+                <button class='button' type='button'>Guess</button>
+                <button class='button' type='button'>Quit</button>
             </div>
         )
     }

@@ -1,16 +1,17 @@
 body{
+    display: flex;
     margin: 0;
     padding: 0;
 }
 
-#root {
+#container{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
 
 #midWrapper {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
-    margin-top: 20px;
 }
