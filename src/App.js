@@ -32,18 +32,6 @@ class App extends React.Component {
     return long
   }
 
-  startGame = () => {
-    let latLong = this.randomPoint()
-
-    this.setState({
-      gameStart: true,
-      lat: latLong[0],
-      long: latLong[1],
-      zoom: 18
-    })
-
-  }
-
   randomPoint = () => {
     let randomLat = this.randomLat()
     let randomLong = this.randomLong()
@@ -56,23 +44,6 @@ class App extends React.Component {
     }
 
     return [randomLat, randomLong]
-  }
-
-  guess = () => {
-    this.setState({
-
-    })
-  }
-
-  quit = () => {
-    this.setState({
-      gameStart: false,
-      guess: false,
-      quit: false,
-      lat: null,
-      long: null,
-      zoom: 8
-    })
   }
 
   north = () => {
@@ -103,7 +74,38 @@ class App extends React.Component {
     )
   }
 
+  startGame = async() => {
+    let latLong = this.randomPoint()
+    let info = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLong[0]}&lon=${latLong[1]}`)
+    .then(response => response.json())
+    .then(jsonObj => jsonObj)
 
+    this.setState({
+      gameStart: true,
+      lat: latLong[0],
+      long: latLong[1],
+      zoom: 18,
+      county: info.address.county,
+      town: info.address.hamlet || info.address.village || info.address.town || info.address.city
+    })
+  }
+
+  guess = () => {
+    this.setState({
+
+    })
+  }
+
+  quit = () => {
+    this.setState({
+      gameStart: false,
+      guess: false,
+      quit: false,
+      lat: null,
+      long: null,
+      zoom: 8
+    })
+  }
 
 
   render() {
