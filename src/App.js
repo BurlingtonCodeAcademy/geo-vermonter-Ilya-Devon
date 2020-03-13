@@ -17,8 +17,9 @@ class App extends React.Component {
       gameStart: false,
       guess: false,
       quit: false,
-      lat: null,
-      long: null,
+      lat: 43.8988,
+      long: -72.5778,
+      zoom: 8
     }
   }
 
@@ -38,7 +39,8 @@ class App extends React.Component {
     this.setState({
       gameStart: true,
       lat: latLong[0],
-      long: latLong[1]
+      long: latLong[1],
+      zoom: 18,
 
     })
   }
@@ -65,7 +67,12 @@ class App extends React.Component {
 
   quit = () => {
     this.setState({
-      gameStart: false
+        gameStart: false,
+        guess: false,
+        quit: false,
+        lat: 43.8988,
+        long: -72.5778,
+        zoom: 8
     })
   }
 
@@ -75,7 +82,7 @@ class App extends React.Component {
       <div id='container'>
         <Header />
         <div id='midWrapper'>
-          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} />
+          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} />
           <div id='sidebar'>
             <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
             <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
