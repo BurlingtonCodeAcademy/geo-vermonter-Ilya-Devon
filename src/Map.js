@@ -13,12 +13,6 @@ class StateMap extends React.Component {
         }
     }
 
-    
-
-    componentDidMount() {
-        
-    }
-
     render() {
         return (
             <Map center={[this.props.lat, this.props.long]} zoom={this.props.zoom} zoomControl={false} boxZoom={false} doubleClickZoom={false} dragging={false} keyboard={false} scrollWheelZoom={false} touchZoom={false}>
@@ -29,8 +23,6 @@ class StateMap extends React.Component {
                 <GeoJSON key='my-geoJson' data={borderData} />
 
                 { this.props.gameStart ?  <Marker position={[this.props.lat, this.props.long]}/> : <div></div> }
-
-               
             </Map>
         );
     }
