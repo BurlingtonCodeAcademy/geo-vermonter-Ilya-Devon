@@ -89,6 +89,13 @@ class App extends React.Component {
     )
   }
 
+  south = () => {
+    this.setState({
+      lat: this.state.lat - .002
+    }
+    )
+  }
+
   west = () => {
     this.setState({
       long: this.state.long - .0025
@@ -96,12 +103,7 @@ class App extends React.Component {
     )
   }
 
-  south = () => {
-    this.setState({
-      lat: this.state.lat - .002
-    }
-    )
-  }
+
 
 
   render() {
@@ -120,15 +122,26 @@ class App extends React.Component {
               <div id="lat" className="information">Latitude: {this.state.lat}</div>
               <div id="long" className="information">Longtitude: {this.state.long}</div>
             </div>
+
             <div id="controllers">
-            <button  type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.north}>North</button>
-            <button  type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.east}>East</button>
-            <button  type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.west}>West</button>
-            <button  type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.south}>South</button>
+
+              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.north}>North</button>
+
+              <div id="middlecontrols">
+
+                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.west}>West</button>
+
+                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.east}>East</button>
+
+              </div>
+
+              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.south}>South</button>
+
             </div>
+
           </div>
         </div>
-      <Footer />
+        <Footer />
       </div>
     )
   }
