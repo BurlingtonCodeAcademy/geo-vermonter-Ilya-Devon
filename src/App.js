@@ -39,9 +39,9 @@ class App extends React.Component {
       gameStart: true,
       lat: latLong[0],
       long: latLong[1],
-      zoom: 18,
-
+      zoom: 18
     })
+
   }
 
   randomPoint = () => {
@@ -75,6 +75,36 @@ class App extends React.Component {
     })
   }
 
+  north = () => {
+    this.setState({
+      lat: this.state.lat + .002
+    }
+    )
+  }
+
+  east = () => {
+    this.setState({
+      long: this.state.long + .0025
+    }
+    )
+  }
+
+  south = () => {
+    this.setState({
+      lat: this.state.lat - .002
+    }
+    )
+  }
+
+  west = () => {
+    this.setState({
+      long: this.state.long - .0025
+    }
+    )
+  }
+
+
+
 
   render() {
     return (
@@ -93,6 +123,23 @@ class App extends React.Component {
               </div>
               <div id="long" className="information">Longtitude: {this.state.long}</div>
             </div>
+
+            <div id="controllers">
+
+              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.north}>North</button>
+
+              <div id="middlecontrols">
+
+                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.west}>West</button>
+
+                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.east}>East</button>
+
+              </div>
+
+              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.south}>South</button>
+
+            </div>
+
           </div>
         </div>
         <Footer />

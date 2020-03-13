@@ -30,3 +30,15 @@ body{
     margin: 5px;
     width: 10vw;
 }
+
+#controllers {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#middlecontrols {
+    display: flex;
+    justify-content: center;
+}
+
