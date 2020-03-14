@@ -7,8 +7,6 @@ class Header extends React.Component {
         super(props)
 
         this.state = {
-            name: 'User',
-            score: '100'
         }
     }
 
@@ -19,10 +17,10 @@ class Header extends React.Component {
         return (
             <div id='header'>
                 <div id='name'>
-                   Name: {this.state.name}
+                   Name: {this.props.name}
                 </div>
                 <div id='score'>
-                    Score: {this.state.score}
+                    Score: {this.props.score}
                 </div>
             </div>
         )

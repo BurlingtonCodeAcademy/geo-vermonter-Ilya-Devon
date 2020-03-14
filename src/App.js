@@ -20,7 +20,10 @@ class App extends React.Component {
       long: null,
       county: null,
       town: null,
-      zoom: 8
+      zoom: 8,
+      score: 100,
+      name: 'User',
+      moves: []
     }
   }
 
@@ -50,34 +53,51 @@ class App extends React.Component {
 
   north = () => {
     this.setState({
-      lat: this.state.lat + .002
+      lat: this.state.lat + .002,
+      score: this.state.score - 1
     }
     )
+    this.state.moves.push([this.state.lat, this.state.long])
   }
 
   east = () => {
     this.setState({
-      long: this.state.long + .0025
+      long: this.state.long + .0025,
+      score: this.state.score -1
     }
     )
+    this.state.moves.push([this.state.lat, this.state.long])
   }
 
   south = () => {
     this.setState({
-      lat: this.state.lat - .002
+      lat: this.state.lat - .002,
+      score: this.state.score -1
     }
     )
+    this.state.moves.push([this.state.lat, this.state.long])
   }
 
   west = () => {
     this.setState({
-      long: this.state.long - .0025
+      long: this.state.long - .0025,
+      score: this.state.score -1
     }
     )
+    this.state.moves.push([this.state.lat, this.state.long])
+  }
+
+  return = () => {
+    let startLatLong = this.state.moves[0]
+    this.setState({
+      lat: startLatLong[0],
+      long: startLatLong[1]
+    })
   }
 
   startGame = async () => {
     let latLong = this.randomPoint()
+    this.state.moves.push(latLong)
     let info = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLong[0]}&lon=${latLong[1]}`)
       .then(response => response.json())
       .then(jsonObj => jsonObj)
@@ -113,15 +133,16 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state.moves)
     return (
       <div id='container'>
-        <Header />
+        <Header score={this.state.score} name={this.state.name} />
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} />
           <div id='sidebar'>
             <div id='buttons'>
               <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
-              <button className='button' disabled={!this.props.gameStart} type='button'>Guess</button>
+              <button className='button' disabled={!this.state.gameStart} type='button'>Guess</button>
               <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Give Up</button>
             </div>
             <div id="informationContainter">
@@ -134,17 +155,19 @@ class App extends React.Component {
 
             <div id="controllers">
 
-              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.north}>North</button>
+              <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.north}>North</button>
 
               <div id="middlecontrols">
 
-                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.west}>West</button>
+                <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.west}>West</button>
 
-                <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.east}>East</button>
+                <button type="button" disabled={!this.state.gameStart} className="smallButton" onClick={this.return}>Return</button>
+
+                <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.east}>East</button>
 
               </div>
 
-              <button type="button" disabled={!this.state.gameStart} className="directionbtn button" onClick={this.south}>South</button>
+              <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.south}>South</button>
 
             </div>
 
