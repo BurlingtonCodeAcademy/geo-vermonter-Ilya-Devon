@@ -60,13 +60,9 @@ class App extends React.Component {
       lat: newLat,
       score: this.state.score - 1,
       moves: newMoves
-<<<<<<< HEAD
     }
     )
 
-=======
-    })
->>>>>>> 5ff8f51cb0c3edde840a49e3b9074d238ffcc40f
   }
 
   east = () => {
@@ -170,12 +166,14 @@ class App extends React.Component {
     })
   }
 
-//  submit = () => {
-//    this.state.county === 
-//    this.setState({
-//
-//    })
-//  }
+  submit = () => {
+    let dropdownOptions = document.getElementById("dropbutton")
+    this.state.county === dropdownOptions.value ? console.log("You Win") : console.log ("You Lose") 
+  
+    this.setState({
+
+    })
+  }
 
   render() {
     return (
@@ -184,7 +182,7 @@ class App extends React.Component {
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
           <div id="modalContainer" hidden={!this.state.modal}>
-            <div class="dropdown">
+            <div className="dropdown">
               <select id="dropbutton">
                 <option value="Addison County">Addison County</option>
                 <option value="Bennington County">Bennington County</option>
@@ -201,7 +199,6 @@ class App extends React.Component {
                 <option value="Windham County">Windham County</option>
                 <option value="Windsor County">Windsor County</option>
               </select>
-              <input type="submit" />
             </div>
             <button className="button" type="button" onClick={this.submit}>Guess</button>
             <button className="button" type="button" onClick={this.cancel}>Cancel</button>
