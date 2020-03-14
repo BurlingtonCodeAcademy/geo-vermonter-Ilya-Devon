@@ -23,7 +23,8 @@ class App extends React.Component {
       zoom: 8,
       score: 100,
       name: 'User',
-      moves: []
+      moves: [],
+      modal: false
     }
   }
 
@@ -79,7 +80,7 @@ class App extends React.Component {
 
   south = () => {
     let newMoves = this.state.moves
-    let newLat = this.state.long - .002
+    let newLat = this.state.lat - .002
     newMoves.push([newLat, this.state.long])
     this.setState({
       lat: newLat,
