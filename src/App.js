@@ -149,17 +149,6 @@ class App extends React.Component {
     })
   }
 
-  quit = () => {
-    this.setState({
-      gameStart: false,
-      guess: false,
-      quit: false,
-      lat: null,
-      long: null,
-      zoom: 8
-    })
-  }
-
   render() {
     return (
       <div id='container'>
@@ -195,12 +184,6 @@ class App extends React.Component {
               </div>
 
               <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.south}>South</button>
-
-            </div>
-
-            <div id="returnbtn-controlls">
-
-              <button type="button" disabled={!this.state.gameStart} className="returnbtn button" onClick={this.return}>Return</button>
 
             </div>
 
