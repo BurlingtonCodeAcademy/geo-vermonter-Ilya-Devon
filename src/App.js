@@ -52,36 +52,52 @@ class App extends React.Component {
   }
 
   north = () => {
+    let newMoves = this.state.moves
+    let newLat = this.state.lat + .002
+    newMoves.push([newLat, this.state.long])
     this.setState({
-      lat: this.state.lat + .002,
-      score: this.state.score - 1
+      lat: newLat,
+      score: this.state.score - 1,
+      moves: newMoves
     }
     )
-    this.state.moves.push([this.state.lat, this.state.long])
+    
   }
 
   east = () => {
+    let newMoves = this.state.moves
+    let newLong = this.state.long + .0025
+    newMoves.push([this.state.lat, newLong])
     this.setState({
-      long: this.state.long + .0025,
-      score: this.state.score -1
+      long: newLong,
+      score: this.state.score -1,
+      moves: newMoves
     }
     )
     this.state.moves.push([this.state.lat, this.state.long])
   }
 
   south = () => {
+    let newMoves = this.state.moves
+    let newLat = this.state.long - .002
+    newMoves.push([newLat, this.state.long])
     this.setState({
-      lat: this.state.lat - .002,
-      score: this.state.score -1
+      lat: newLat,
+      score: this.state.score -1,
+      moves: newMoves
     }
     )
     this.state.moves.push([this.state.lat, this.state.long])
   }
 
   west = () => {
+    let newMoves = this.state.moves
+    let newLong = this.state.long - .0025
+    newMoves.push([this.state.lat, newLong])
     this.setState({
-      long: this.state.long - .0025,
-      score: this.state.score -1
+      long: newLong,
+      score: this.state.score -1,
+      moves: newMoves
     }
     )
     this.state.moves.push([this.state.lat, this.state.long])
@@ -127,18 +143,18 @@ class App extends React.Component {
       long: null,
       county: this.state.county,
       town: this.state.town,
-      zoom: 8
+      zoom: 8,
+      moves: []
     })
   }
 
 
   render() {
-    console.log(this.state.moves)
     return (
       <div id='container'>
         <Header score={this.state.score} name={this.state.name} />
         <div id='midWrapper'>
-          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} />
+          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
           <div id='sidebar'>
             <div id='buttons'>
               <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
