@@ -8,7 +8,7 @@ class Footer extends React.Component {
         this.state = {
             name: 'Name',
             email: 'Email',
-            message: 'message'
+            message: 'Message'
         }
     }
 

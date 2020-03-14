@@ -17,6 +17,15 @@ body{
 
 }
 
+#modalContainer {
+    z-index: 5;
+    width: 30vw;
+    height: 30vh;
+    border: 1px solid black;
+    background-color: mediumseagreen;
+    position: fixed;
+}
+
 #sidebar {
     display: flex;
     align-items: center;

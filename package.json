@@ -6,6 +6,7 @@
     "leaflet": "^1.6.0",
     "leaflet-pip": "^1.1.0",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.8.6",
     "react-leaflet": "^2.6.1",
     "react-scripts": "3.0.1"

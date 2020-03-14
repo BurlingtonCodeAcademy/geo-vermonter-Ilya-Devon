@@ -62,7 +62,7 @@ class App extends React.Component {
       moves: newMoves
     }
     )
-    
+
   }
 
   east = () => {
@@ -71,7 +71,7 @@ class App extends React.Component {
     newMoves.push([this.state.lat, newLong])
     this.setState({
       long: newLong,
-      score: this.state.score -1,
+      score: this.state.score - 1,
       moves: newMoves
     }
     )
@@ -84,7 +84,7 @@ class App extends React.Component {
     newMoves.push([newLat, this.state.long])
     this.setState({
       lat: newLat,
-      score: this.state.score -1,
+      score: this.state.score - 1,
       moves: newMoves
     }
     )
@@ -97,7 +97,7 @@ class App extends React.Component {
     newMoves.push([this.state.lat, newLong])
     this.setState({
       long: newLong,
-      score: this.state.score -1,
+      score: this.state.score - 1,
       moves: newMoves
     }
     )
@@ -145,9 +145,29 @@ class App extends React.Component {
       county: this.state.county,
       town: this.state.town,
       zoom: 8,
-      moves: []
+      moves: [],
+      modal: false,
     })
   }
+
+  guess = () => {
+    this.setState({
+      modal: true,
+    })
+  }
+
+  cancel = () => {
+    this.setState({
+      modal: false,
+    })
+  }
+
+//  submit = () => {
+//    this.state.county === 
+//    this.setState({
+//
+//    })
+//  }
 
   render() {
     return (
@@ -155,10 +175,33 @@ class App extends React.Component {
         <Header score={this.state.score} name={this.state.name} />
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
+          <div id="modalContainer" hidden={!this.state.modal}>
+            <div class="dropdown">
+              <select id="dropbutton">
+                <option value="Addison County">Addison County</option>
+                <option value="Bennington County">Bennington County</option>
+                <option value="Caledonia County">Caledonia County</option>
+                <option value="Chittenden County">Chittenden County</option>
+                <option value="Essex County">Essex County</option>
+                <option value="Franklin County">Franklin County</option>
+                <option value="Grand Isle County">Grand Isle County</option>
+                <option value="Lamoille County">Lamoille County</option>
+                <option value="Orange County">Orange County</option>
+                <option value="Orleans County">Orleans County</option>
+                <option value="Rutland County">Rutland County</option>
+                <option value="Washington County">Washington County</option>
+                <option value="Windham County">Windham County</option>
+                <option value="Windsor County">Windsor County</option>
+              </select>
+              <input type="submit" />
+            </div>
+            <button className="button" type="button" onClick={this.submit}>Guess</button>
+            <button className="button" type="button" onClick={this.cancel}>Cancel</button>
+          </div>
           <div id='sidebar'>
             <div id='buttons'>
               <button className='button' disabled={this.state.gameStart} type='button' onClick={this.startGame}>Start</button>
-              <button className='button' disabled={!this.state.gameStart} type='button'>Guess</button>
+              <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.guess}>Guess</button>
               <button className='button' disabled={!this.state.gameStart} type='button' onClick={this.quit}>Give Up</button>
             </div>
             <div id="informationContainter">

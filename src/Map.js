@@ -16,7 +16,7 @@ class StateMap extends React.Component {
 
     render() {
         return (
-            <Map center={[this.props.lat || 43.8988, this.props.long || -72.5778]} zoom={this.props.zoom} zoomControl={false} boxZoom={false} doubleClickZoom={false} dragging={false} keyboard={false} scrollWheelZoom={false} touchZoom={false}>
+            <Map center={[this.props.lat || 43.8988, this.props.long || -72.5778]} zoom={this.props.zoom} zoomControl={true} boxZoom={true} doubleClickZoom={true} dragging={true} keyboard={true} scrollWheelZoom={true} touchZoom={true}>
                 <TileLayer
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
                     attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
