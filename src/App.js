@@ -53,59 +53,55 @@ class App extends React.Component {
   }
 
   north = () => {
-    let newMoves = this.state.moves
+    const { moves } = this.state
     let newLat = this.state.lat + .002
-    newMoves.push([newLat, this.state.long])
+    const newMoves = moves.concat([[newLat, this.state.long]])
     this.setState({
       lat: newLat,
       score: this.state.score - 1,
       moves: newMoves
-    }
-    )
-    
+    })
   }
 
   east = () => {
-    let newMoves = this.state.moves
+    const { moves } = this.state
     let newLong = this.state.long + .0025
-    newMoves.push([this.state.lat, newLong])
+    const newMoves = moves.concat([[this.state.lat, newLong]])
     this.setState({
       long: newLong,
       score: this.state.score -1,
       moves: newMoves
     }
     )
-    this.state.moves.push([this.state.lat, this.state.long])
   }
 
   south = () => {
-    let newMoves = this.state.moves
+    const { moves } = this.state
     let newLat = this.state.lat - .002
-    newMoves.push([newLat, this.state.long])
+    const newMoves = moves.concat([[newLat, this.state.long]])
     this.setState({
       lat: newLat,
       score: this.state.score -1,
       moves: newMoves
     }
     )
-    this.state.moves.push([this.state.lat, this.state.long])
   }
 
   west = () => {
-    let newMoves = this.state.moves
+    const { moves } = this.state
     let newLong = this.state.long - .0025
-    newMoves.push([this.state.lat, newLong])
+    const newMoves = moves.concat([[this.state.lat, newLong]])
     this.setState({
       long: newLong,
       score: this.state.score -1,
       moves: newMoves
     }
     )
-    this.state.moves.push([this.state.lat, this.state.long])
   }
 
-  return = () => {
-    let startLatLong = this.state.moves[0]
+  returnButton = () => {
+    let theMoves = this.state.moves
+    let startLatLong = theMoves[0]
     this.setState({
       lat: startLatLong[0],
       long: startLatLong[1]
@@ -114,12 +110,17 @@ class App extends React.Component {
 
   startGame = async () => {
     let latLong = this.randomPoint()
-    this.state.moves.push(latLong)
+    console.log({latLong})
+    const { moves } = this.state
+    console.log({moves})
+    const newMoves = moves.concat(latLong)
+    console.log({newMoves})
     let info = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLong[0]}&lon=${latLong[1]}`)
       .then(response => response.json())
       .then(jsonObj => jsonObj)
-
+    console.log({info})
     this.setState({
+      moves: [newMoves],
       gameStart: true,
       lat: latLong[0],
       long: latLong[1],
@@ -127,6 +128,7 @@ class App extends React.Component {
       county: info.address.county,
       town: info.address.hamlet || info.address.village || info.address.town || info.address.city
     })
+    console.log("STATE: ", this.state)
   }
 
   guess = () => {
@@ -177,7 +179,7 @@ class App extends React.Component {
 
                 <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.west}>West</button>
 
-                <button type="button" disabled={!this.state.gameStart} className="smallButton" onClick={this.return}>Return</button>
+                <button type="button" disabled={!this.state.gameStart} className="smallButton" onClick={this.returnButton}>Return</button>
 
                 <button type="button" disabled={!this.state.gameStart} className="button" onClick={this.east}>East</button>
 
