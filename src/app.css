@@ -36,6 +36,11 @@ body{
     width: 10vw;
 }
 
+.smallButton{
+    margin: 5px;
+    width: 6vw;
+}
+
 #buttons {
     display: flex;
     justify-content: center;
