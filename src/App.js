@@ -179,7 +179,8 @@ losing = () => {
   let winMessage = document.getElementById("winMessage")
   winMessage.textContent = "Try Again"
   this.setState({
-    score: this.state.score - 10
+    score: this.state.score - 10,
+    modal: false
   })
 }
 
