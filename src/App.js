@@ -18,6 +18,8 @@ class App extends React.Component {
       quit: false,
       lat: null,
       long: null,
+      startLat: null,
+      startLong: null,
       county: null,
       town: null,
       zoom: 8,
@@ -101,11 +103,13 @@ class App extends React.Component {
   }
 
   returnButton = () => {
-    let theMoves = this.state.moves
-    let startLatLong = theMoves[0]
+    const { moves } = this.state
+    let startPoint = moves[0]
+    let newMoves = moves.concat([startPoint])
     this.setState({
-      lat: startLatLong[0],
-      long: startLatLong[1]
+      lat: startPoint[0],
+      long: startPoint[1],
+      moves: newMoves
     })
   }
 
@@ -121,15 +125,11 @@ class App extends React.Component {
       gameStart: true,
       lat: latLong[0],
       long: latLong[1],
+      startLat: latLong[0],
+      startLong: latLong[1],
       zoom: 18,
       county: info.address.county,
       town: info.address.hamlet || info.address.village || info.address.town || info.address.city
-    })
-  }
-
-  guess = () => {
-    this.setState({
-
     })
   }
 
@@ -190,7 +190,7 @@ class App extends React.Component {
       <div id='container'>
         <Header score={this.state.score} name={this.state.name} />
         <div id='midWrapper'>
-          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
+          <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} startLat={this.state.startLat} startLong={this.state.startLong} zoom={this.state.zoom} moves={this.state.moves} />
           <div id="modalContainer" hidden={!this.state.modal}>
             <div id='modalWrapper'>
               <div id="modalHeader">What county are we in?</div>

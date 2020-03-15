@@ -24,7 +24,7 @@ class StateMap extends React.Component {
                 />
                 <GeoJSON key='my-geoJson' data={borderData} />
                 <Polyline key='DrawLine' positions={[this.props.moves]} color={'red'} />
-                { this.props.gameStart ?  <Marker position={[this.props.lat, this.props.long]} /> : null }
+                { this.props.gameStart ?  <Marker position={[this.props.startLat, this.props.startLong]} /> : null }
             </Map>
             </ErrorBoundary>
         );
