@@ -24,7 +24,7 @@ class App extends React.Component {
       score: 100,
       name: 'User',
       moves: [],
-      modal: false
+      modal: false,
     }
   }
 
@@ -61,6 +61,7 @@ class App extends React.Component {
       score: this.state.score - 1,
       moves: newMoves
     })
+
   }
 
   east = () => {
@@ -159,9 +160,30 @@ class App extends React.Component {
     })
   }
 
- submit = () => {
+winning = () => {
+  let winMessage = document.getElementById("winMessage")
+  winMessage.textContent = "You Win!"
+  this.setState({
+    score: this.state.score + 50,
+    county: this.state.county,
+  })
+}
 
- }
+losing = () => {
+  let winMessage = document.getElementById("winMessage")
+  winMessage.textContent = "Try Again"
+  this.setState({
+    score: this.state.score - 10,
+    modal: false
+  })
+}
+
+  submit = () => {
+    let dropdownOptions = document.getElementById("dropbutton")
+    
+    this.state.county === dropdownOptions.value ? 
+    this.winning() : this.losing()
+  }
 
   render() {
     return (
@@ -170,6 +192,8 @@ class App extends React.Component {
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
           <div id="modalContainer" hidden={!this.state.modal}>
+            <div id="modalHeader">What county are we in?</div>
+            <div id="winMessage"></div>
             <div className="dropdown">
               <select id="dropbutton">
                 <option value="Addison County">Addison County</option>
