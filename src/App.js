@@ -60,13 +60,7 @@ class App extends React.Component {
       lat: newLat,
       score: this.state.score - 1,
       moves: newMoves
-<<<<<<< HEAD
-    }
-    )
-
-=======
     })
->>>>>>> 5ff8f51cb0c3edde840a49e3b9074d238ffcc40f
   }
 
   east = () => {
@@ -116,15 +110,11 @@ class App extends React.Component {
 
   startGame = async () => {
     let latLong = this.randomPoint()
-    console.log({latLong})
     const { moves } = this.state
-    console.log({moves})
     const newMoves = moves.concat(latLong)
-    console.log({newMoves})
     let info = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLong[0]}&lon=${latLong[1]}`)
       .then(response => response.json())
       .then(jsonObj => jsonObj)
-    console.log({info})
     this.setState({
       moves: [newMoves],
       gameStart: true,
@@ -134,7 +124,6 @@ class App extends React.Component {
       county: info.address.county,
       town: info.address.hamlet || info.address.village || info.address.town || info.address.city
     })
-    console.log("STATE: ", this.state)
   }
 
   guess = () => {
@@ -170,12 +159,9 @@ class App extends React.Component {
     })
   }
 
-//  submit = () => {
-//    this.state.county === 
-//    this.setState({
-//
-//    })
-//  }
+ submit = () => {
+
+ }
 
   render() {
     return (
@@ -184,13 +170,13 @@ class App extends React.Component {
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
           <div id="modalContainer" hidden={!this.state.modal}>
-            <div class="dropdown">
+            <div className="dropdown">
               <select id="dropbutton">
                 <option value="Addison County">Addison County</option>
                 <option value="Bennington County">Bennington County</option>
                 <option value="Caledonia County">Caledonia County</option>
                 <option value="Chittenden County">Chittenden County</option>
-                <option value="Essex County">Essex County</option>
+                <option selected={true} value="Essex County">Essex County</option>
                 <option value="Franklin County">Franklin County</option>
                 <option value="Grand Isle County">Grand Isle County</option>
                 <option value="Lamoille County">Lamoille County</option>
@@ -201,7 +187,6 @@ class App extends React.Component {
                 <option value="Windham County">Windham County</option>
                 <option value="Windsor County">Windsor County</option>
               </select>
-              <input type="submit" />
             </div>
             <button className="button" type="button" onClick={this.submit}>Guess</button>
             <button className="button" type="button" onClick={this.cancel}>Cancel</button>
