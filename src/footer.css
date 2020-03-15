@@ -1,9 +1,11 @@
 #footer {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100vw;
-    height: 80px;
-    background-color: fuchsia;
+    height: 50px;
+    background-color: #67a165;
+    box-shadow: 0px 25px 30px 20px black;
+    color: white;
+    font-size: 1.2vw;
 }

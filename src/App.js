@@ -160,29 +160,29 @@ class App extends React.Component {
     })
   }
 
-winning = () => {
-  let winMessage = document.getElementById("winMessage")
-  winMessage.textContent = "You Win!"
-  this.setState({
-    score: this.state.score + 50,
-    county: this.state.county,
-  })
-}
+  winning = () => {
+    let winMessage = document.getElementById("winMessage")
+    winMessage.textContent = "You Win!"
+    this.setState({
+      score: this.state.score + 50,
+      county: this.state.county,
+    })
+  }
 
-losing = () => {
-  let winMessage = document.getElementById("winMessage")
-  winMessage.textContent = "Try Again"
-  this.setState({
-    score: this.state.score - 10,
-    modal: false
-  })
-}
+  losing = () => {
+    let winMessage = document.getElementById("winMessage")
+    winMessage.textContent = "Try Again"
+    this.setState({
+      score: this.state.score - 10,
+      modal: false
+    })
+  }
 
   submit = () => {
     let dropdownOptions = document.getElementById("dropbutton")
-    
-    this.state.county === dropdownOptions.value ? 
-    this.winning() : this.losing()
+
+    this.state.county === dropdownOptions.value ?
+      this.winning() : this.losing()
   }
 
   render() {
@@ -192,25 +192,27 @@ losing = () => {
         <div id='midWrapper'>
           <StateMap gameStart={this.state.gameStart} lat={this.state.lat} long={this.state.long} zoom={this.state.zoom} moves={this.state.moves} />
           <div id="modalContainer" hidden={!this.state.modal}>
-            <div id="modalHeader">What county are we in?</div>
-            <div id="winMessage"></div>
-            <div className="dropdown">
-              <select id="dropbutton">
-                <option value="Addison County">Addison County</option>
-                <option value="Bennington County">Bennington County</option>
-                <option value="Caledonia County">Caledonia County</option>
-                <option value="Chittenden County">Chittenden County</option>
-                <option selected={true} value="Essex County">Essex County</option>
-                <option value="Franklin County">Franklin County</option>
-                <option value="Grand Isle County">Grand Isle County</option>
-                <option value="Lamoille County">Lamoille County</option>
-                <option value="Orange County">Orange County</option>
-                <option value="Orleans County">Orleans County</option>
-                <option value="Rutland County">Rutland County</option>
-                <option value="Washington County">Washington County</option>
-                <option value="Windham County">Windham County</option>
-                <option value="Windsor County">Windsor County</option>
-              </select>
+            <div id='modalWrapper'>
+              <div id="modalHeader">What county are we in?</div>
+              <div id="winMessage"></div>
+              <div className="dropdown">
+                <select id="dropbutton">
+                  <option value="Addison County">Addison County</option>
+                  <option value="Bennington County">Bennington County</option>
+                  <option value="Caledonia County">Caledonia County</option>
+                  <option value="Chittenden County">Chittenden County</option>
+                  <option value="Essex County">Essex County</option>
+                  <option value="Franklin County">Franklin County</option>
+                  <option value="Grand Isle County">Grand Isle County</option>
+                  <option value="Lamoille County">Lamoille County</option>
+                  <option value="Orange County">Orange County</option>
+                  <option value="Orleans County">Orleans County</option>
+                  <option value="Rutland County">Rutland County</option>
+                  <option value="Washington County">Washington County</option>
+                  <option value="Windham County">Windham County</option>
+                  <option value="Windsor County">Windsor County</option>
+                </select>
+              </div>
             </div>
             <button className="button" type="button" onClick={this.submit}>Guess</button>
             <button className="button" type="button" onClick={this.cancel}>Cancel</button>
@@ -224,9 +226,6 @@ losing = () => {
             <div id="informationContainter">
               <div id="county" className="information">County: {this.state.gameStart ? '???' : this.state.county}</div>
               <div id="town" className="information">Town: {this.state.gameStart ? '???' : this.state.town}</div>
-              <div id="lat" className="information">Latitude: {this.state.gameStart ? '???' : this.state.lat}
-              </div>
-              <div id="long" className="information">Longtitude: {this.state.gameStart ? '???' : this.state.long}</div>
             </div>
 
             <div id="controllers">
