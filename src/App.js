@@ -131,6 +131,7 @@ class App extends React.Component {
       county: info.address.county,
       town: info.address.hamlet || info.address.village || info.address.town || info.address.city
     })
+    console.log(this.state.county)
   }
 
   quit = () => {
@@ -140,6 +141,8 @@ class App extends React.Component {
       quit: false,
       lat: null,
       long: null,
+      startLat: null,
+      startLong: null,
       county: this.state.county,
       town: this.state.town,
       zoom: 8,
