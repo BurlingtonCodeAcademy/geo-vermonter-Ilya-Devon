@@ -1,6 +1,9 @@
+// Items imported to be used
+
 import React from 'react';
 import './footer.css';
 
+// Creating React component
 class Footer extends React.Component {
     render() {
         return (

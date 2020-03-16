@@ -1,4 +1,6 @@
-.leaflet-container{
+/* Styling for the Map */
+
+.leaflet-container {
     z-index: -1;
     height: 600px;
     width: 55vw;

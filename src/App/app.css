@@ -1,3 +1,5 @@
+/* CSS for background of the page */
+
 body {
     font-family: 'Baloo Da 2', cursive;
     display: flex;
@@ -14,17 +16,21 @@ body {
     height: 100vh;
 }
 
+/* Everything contained in the middle of the page */
+
 #midWrapper {
     display: flex;
     justify-content: space-around;
 }
+
+/* Modal specific */
 
 #modalContainer {
     z-index: 5;
     width: 23vw;
     height: 26vh;
     border: 1px solid black;
-    background-color:#5f7346;
+    background-color: #5f7346;
     position: fixed;
     padding: 15px;
     border-radius: 15px;
@@ -40,17 +46,19 @@ body {
     font-size: 2vw;
 }
 
-
+/* drop down button specific */
 
 #dropbutton {
     margin: 8px;
-    width: 10vw;
+    width: 15vw;
     height: 3vw;
     background-color: #737146;
     font-size: 1.3vw;
     cursor: pointer;
     box-shadow: 0px 8px 10px -6px;
 }
+
+/* Sidebar specific */
 
 #sidebar {
     display: flex;
@@ -60,16 +68,20 @@ body {
     border: 1px rgba(0, 0, 0, 0.322) solid;
     width: 30vw;
     height: 600px;
-    background-color:#5f7346;
+    background-color: #5f7346;
     border-radius: 15px;
     box-shadow: 0px 10px 15px -6px black;
 }
 
+/* Innertext on sidebar */
+
 .information {
-    padding: 15px;
-    font-size: 2vw;
+    padding: 3px;
+    font-size: 1.6vw;
     color: white
 }
+
+/* All buttons */
 
 .button {
     margin: 8px;
@@ -100,9 +112,4 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-}
-
-#middlecontrols {
-    display: flex;
-    justify-content: center;
 }
