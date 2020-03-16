@@ -28,13 +28,14 @@ body {
 #modalContainer {
     z-index: 5;
     width: 23vw;
-    height: 26vh;
+    height: 30vh;
     border: 1px solid black;
     background-color: #5f7346;
     position: fixed;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 30px 200px 10px black;
+    margin-top: 15vh;
 }
 
 #modalWrapper {
@@ -44,6 +45,13 @@ body {
     align-items: center;
     color: white;
     font-size: 2vw;
+    height: 28vh;
+}
+
+#buttonWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 /* drop down button specific */

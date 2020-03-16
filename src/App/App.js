@@ -266,10 +266,12 @@ class App extends React.Component {
                   <option value="Windsor County">Windsor County</option>
                 </select>
               </div>
+              <div id='buttonWrapper'>
+                {/* Buttons for Guessing or Canceling */}
+                <button className="button" type="button" onClick={this.submit}>Guess</button>
+                <button className="button" type="button" onClick={this.cancel}>Cancel</button>
+              </div>
             </div>
-            {/* Buttons for Guessing or Canceling */}
-            <button className="button" type="button" onClick={this.submit}>Guess</button>
-            <button className="button" type="button" onClick={this.cancel}>Cancel</button>
           </div>
           {/* Side Bar Information */}
           <div id='sidebar'>
@@ -281,7 +283,7 @@ class App extends React.Component {
             </div>
             {/* Information section of the Sidebar */}
             <div id="informationContainter">
-              <div id="county" className="information">County: {this.state.info ?  this.state.county : '???'}</div>
+              <div id="county" className="information">County: {this.state.info ? this.state.county : '???'}</div>
               <div id="town" className="information">Town: {this.state.info ? this.state.town : '???'}</div>
               <div id="Lat" className="information">Lat: {this.state.info ? this.state.startLat : '???'}</div>
               <div id="Long" className="information">Long: {this.state.info ? this.state.startLong : '???'}</div>
