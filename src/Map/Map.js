@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, TileLayer, GeoJSON, Marker, Polyline } from "react-leaflet";
 import "./map.css";
-import borderData from './Border.js';
+import borderData from '../Border/Border.js';
 // import { Polyline } from 'leaflet';
 
 

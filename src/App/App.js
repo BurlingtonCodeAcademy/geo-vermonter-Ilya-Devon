@@ -1,10 +1,10 @@
 import React from 'react';
-import StateMap from './Map.js';
-import Header from './Header.js';
-import Footer from './Footer.js';
+import StateMap from '../Map/Map.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 import './app.css';
 import leafletPip from 'leaflet-pip'
-import borderData from './Border.js'
+import borderData from '../Border/Border.js'
 import L from 'leaflet'
 
 
