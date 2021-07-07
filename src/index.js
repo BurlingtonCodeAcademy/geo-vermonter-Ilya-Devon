@@ -1,7 +1,7 @@
+// Items being imported
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App/App.js'
 
-ReactDOM.render(
-  <h1>Hello World!</h1>,
-  document.getElementById('root')
-)
+// Sending everything to the HTML Root
+ReactDOM.render(<App />, document.getElementById('root'))
